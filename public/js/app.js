@@ -2696,6 +2696,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 
+var API_URL = '/api/client';
 function showLoader() {
   return {
     type: _types__WEBPACK_IMPORTED_MODULE_1__.SHOW_LOADER
@@ -2726,7 +2727,7 @@ function editClientForm(data) {
             case 0:
               _context.prev = 0;
               dispatch(showLoaderBtn());
-              url = '/api/client/' + data.id;
+              url = API_URL + '/' + data.id;
               _context.next = 5;
               return axios.put(url, data);
 
@@ -2804,7 +2805,7 @@ function deleteClient(id) {
             case 0:
               _context2.prev = 0;
               dispatch(showLoader());
-              url = '/api/client/' + id;
+              url = API_URL + '/' + id;
               _context2.next = 5;
               return axios["delete"](url);
 
@@ -2885,7 +2886,7 @@ function addFilters(filterItem) {
   };
 }
 function getClientWithFilters(filterItem) {
-  var url = '/api/client';
+  var url = API_URL;
   return /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3(dispatch) {
       var options, params, response;
@@ -2949,7 +2950,7 @@ function fetchClients() {
             case 0:
               _context4.prev = 0;
               dispatch(showLoader());
-              url = '/api/client';
+              url = API_URL;
               _context4.next = 5;
               return axios.get(url);
 

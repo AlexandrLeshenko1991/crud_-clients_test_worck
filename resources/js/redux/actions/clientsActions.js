@@ -8,6 +8,8 @@ import {
     SHOW_LOADER_BTN
 } from '../types'
 
+const API_URL = '/api/client';
+
 export function showLoader() {
     return {
         type: SHOW_LOADER
@@ -36,7 +38,7 @@ export function editClientForm(data) {
     return async dispatch => {
         try {
             dispatch(showLoaderBtn())
-            let url = '/api/client/'+data.id
+            let url = API_URL+'/'+data.id
             const response = await axios.put(url, data);
 
             if (response.data.success){
@@ -65,7 +67,7 @@ export function deleteClient(id) {
     return async dispatch => {
         try {
             dispatch(showLoader())
-            let url = '/api/client/'+id
+            let url = API_URL+'/'+id
             const response = await axios.delete(url);
 
             if (response.data.success){
@@ -105,7 +107,7 @@ export function addFilters(filterItem) {
 }
 
 export function getClientWithFilters(filterItem) {
-    let url = '/api/client'
+    let url = API_URL
     return async dispatch => {
         try {
             dispatch( addFilters(filterItem) )
@@ -131,7 +133,7 @@ export function fetchClients( options = []) {
     return async dispatch => {
         try {
             dispatch(showLoader())
-            let url = '/api/client'
+            let url = API_URL
             const response = await axios.get(url);
             dispatch({type: FETCH_CLIENTS, payload: response.data})
             dispatch(hideLoader())
